@@ -13,8 +13,8 @@ Matriz::Matriz(int linhas, int colunas, const double &valor){
   this->linhas = linhas;
   this->colunas = colunas;
   matriz = new int* [linhas]; // definir array linhas
-  for( int j = 0; j < colunas; j++ ){
-    matriz[j]  = new int[2];
+  for( int j = 0; j < linhas; j++ ){
+    matriz[j]  = new int[j];
   }
   for (int i = 0; i < linhas; i++){
     // std::cout << "Contou Linha" << std::endl;
