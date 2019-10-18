@@ -50,3 +50,10 @@ std::ostream& operator<<(std::ostream &out, const Matriz &m){
     out << " ]" << std::endl;
   }
 }
+
+int& Matriz::operator()(int linha, int coluna) {
+    if (linha > linhas || coluna > colunas) {
+        throw std::out_of_range("Error");
+    }
+    return matriz[linha-1][coluna-1];
+}

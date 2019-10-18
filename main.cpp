@@ -8,6 +8,6 @@ using namespace std;
 int main(){
   Matriz Y;
   Matriz X(3,3);
-  cout << X;
+  cout << X(4,3);
   return 0;
 }

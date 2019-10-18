@@ -21,6 +21,7 @@ public:
 
 
   friend std::ostream& operator<<(std::ostream &out, const Matriz &m);
+  int& operator()(int linha, int coluna);
 
 
 
