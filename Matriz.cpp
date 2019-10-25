@@ -45,10 +45,10 @@ std::ostream& operator<<(std::ostream &out, const Matriz &m){
       }else{
         out << m.matriz[i][j] << " , ";
       }
-
     }
     out << " ]" << std::endl;
   }
+  return out;
 }
 
 int& Matriz::operator()(int linha, int coluna) {
