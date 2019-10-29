@@ -20,7 +20,7 @@ Matriz::Matriz(int linhas, int colunas, const double &valor){
     // std::cout << "Contou Linha" << std::endl;
     for(int j = 0; j < colunas; j++){
       // std::cout << "Contou coluna " ;
-      matriz[i][j] = 0;
+      matriz[i][j] = valor;
     }
     // std::cout << std::endl;
   }
@@ -35,8 +35,21 @@ int Matriz::getRows(){
 int Matriz::getCols(){
   return colunas;
 }
+void Matriz::zeros(){
+  for (int i = 0; i < linhas; i++){
+    // std::cout << "Contou Linha" << std::endl;
+    for(int j = 0; j < colunas; j++){
+      // std::cout << "Contou coluna " ;
+      matriz[i][j] = 0;
+    }
+    // std::cout << std::endl;
+  }
+}
 
 std::ostream& operator<<(std::ostream &out, const Matriz &m){
+  if(m.linhas == 0 || m.colunas == 0 ){
+    throw std::out_of_range("Error, linha ou coluna de tamanho 0");
+  }
   for(int i = 0; i < m.linhas; i++){
     out << "[ ";
     for(int j = 0; j < m.colunas;j++){
