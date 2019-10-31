@@ -35,16 +35,7 @@ int Matriz::getRows(){
 int Matriz::getCols(){
   return colunas;
 }
-void Matriz::zeros(){
-  for (int i = 0; i < linhas; i++){
-    // std::cout << "Contou Linha" << std::endl;
-    for(int j = 0; j < colunas; j++){
-      // std::cout << "Contou coluna " ;
-      matriz[i][j] = 0;
-    }
-    // std::cout << std::endl;
-  }
-}
+
 
 std::ostream& operator<<(std::ostream &out, const Matriz &m){
   if(m.linhas == 0 || m.colunas == 0 ){
@@ -74,26 +65,26 @@ double& Matriz::operator()(int linha, int coluna) {
 void Matriz::zeros(){
 for (int i=0; i<linhas; i++){
     for(int j=0; j<colunas; j++)
-            matriz[i][j]=0; 
+            matriz[i][j]=0;
   }
 
 }
 
 Matriz& Matriz::operator=(const Matriz &m) {
 	if (this == &m)
-		return *this;   
+		return *this;
 	for (int i = 0; i < linhas; i++)
 		delete[] matriz[i];
-	delete[] matriz;          
+	delete[] matriz;
 	linhas = m.linhas;
 	colunas = m.colunas;
-	matriz = new double*[linhas];   
+	matriz = new double*[linhas];
 	for (int i = 0; i < linhas; i++) {
 		matriz[i] = new double[colunas];
 		for (int j = 0; j < colunas; j++)
-			matriz[i][j] = m.matriz[i][j];    
+			matriz[i][j] = m.matriz[i][j];
 	}
-	return *this; 
+	return *this;
 }
 
 
@@ -113,13 +104,13 @@ Matriz Matriz::operator+(const Matriz& m) const{
 
 }
 Matriz& Matriz::operator+=(const Matriz &A){
-    if ((A.colunas != this->colunas)||(A.linhas != this->linhas)){ 
+    if ((A.colunas != this->colunas)||(A.linhas != this->linhas)){
         throw std::out_of_range("Erro!!! Matrizes com dimensoes diferentes.");
     }
     else{
         for(int i = 0; i < A.linhas; i++){
-            for(int j = 0; j < A.colunas; j++){ 
-                this->matriz[i][j] += A.matriz[i][j]; 
+            for(int j = 0; j < A.colunas; j++){
+                this->matriz[i][j] += A.matriz[i][j];
             }
         }
     }
@@ -142,10 +133,10 @@ Matriz& Matriz::operator-=(const Matriz& m){
 Matriz& Matriz::operator*=(const int&a) {
 	for (int i = 0; i < linhas; i++) {
 		for (int j = 0; j < colunas; j++) {
-			matriz[i][j] = matriz[i][j] * a; 
+			matriz[i][j] = matriz[i][j] * a;
 		}
 	}
-	return *this; 
+	return *this;
 }
 
 Matriz& Matriz::operator*=(const Matriz&x) {
@@ -160,7 +151,7 @@ Matriz& Matriz::operator*=(const Matriz&x) {
 			}
 
 		}
-		return *this; 
+		return *this;
 	}
 }
 
@@ -169,12 +160,12 @@ Matriz Matriz::operator*(const Matriz&x) {
     throw std::out_of_range("Error");
   }
 	else {
-        Matriz C(linhas,x.colunas); 
+        Matriz C(linhas,x.colunas);
 		for (int i = 0; i < linhas; i++) {
 			for (int j = 0; j < x.colunas; j++) {
-				for(int k = 0; k < x.linhas; k++) 
+				for(int k = 0; k < x.linhas; k++)
 			}
 		}
-		return C; 
+		return C;
 	}
 }
