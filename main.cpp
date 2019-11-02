@@ -1,10 +1,11 @@
 #include <iostream>
+#include <limits>
 #include "Matriz.h"
 using namespace std;
 
 
 
-
+int finalizarPrograma;
 int main(){// copiado exemplo do enunciado
 
   Matriz Y;
@@ -26,5 +27,11 @@ int main(){// copiado exemplo do enunciado
   // if(X != Y) // verifica a desigualdade entre A e C
   cout << C << endl; // Impressão de matrizes
   // cin >> Y // leitura de dados para dentro da matriz Y
+
+
+
+  std::cout << "Pressione ENTER para finalizar o programa:";
+  std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
+
   return 0;
 }
