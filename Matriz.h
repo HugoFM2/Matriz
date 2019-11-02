@@ -29,6 +29,7 @@ public:
   bool operator!=(const Matriz &m);
   Matriz operator~();
   friend std::ostream& operator<<(std::ostream &out, const Matriz &m);
+  friend std::istream& operator>>(std::istream &in,Matriz &m);
   double& operator()(int linha, int coluna);
 
 };

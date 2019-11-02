@@ -14,7 +14,7 @@ Matriz::Matriz(int linhas, int colunas, const double &valor){
   this->colunas = colunas;
   matriz = new double* [linhas]; // definir array linhas
   for( int j = 0; j < linhas; j++ ){
-    matriz[j]  = new double[j];
+    matriz[j]  = new double[colunas];
   }
   for (int i = 0; i < linhas; i++){
     // std::cout << "Contou Linha" << std::endl;
@@ -55,6 +55,45 @@ std::ostream& operator<<(std::ostream &out, const Matriz &m){
   return out;
 }
 
+std::istream& operator>>(std::istream &in, Matriz &m){
+
+  int l,c,valor;
+  int cursor = 1;
+  int colCursor, linCursor;
+  std::cout << "Nº de linhas: ";
+  in >> l;
+  std::cout << "Nº de colunas: ";
+  in >> c;
+  Matriz aux(l,c);
+  for(int k = 0;k<l*c;k++){
+    for(int i = 0; i<l;i++){
+      std::cout << "[ ";
+      for(int j = 0; j < c;j++){
+        if(cursor == (i*c+j)+1){
+          std::cout << "_ ," ;
+          colCursor = j + 1;
+          linCursor = i + 1;
+        } else {
+          std::cout<< aux(i+1,j+1) << ",";
+        }
+      }
+      std::cout << " ]" << std::endl;
+    }
+    // std::cout << "cursor = " << cursor << std::endl;
+    std::cout << "ColCursor = " << colCursor <<std::endl;
+    std::cout << "Insira o valor aonde está sublinhado: ";
+    std::cin >> valor;
+
+
+    aux(linCursor, colCursor) = valor;
+    cursor++;
+  }
+
+
+  // m=aux;
+  return in;
+}
+
 double& Matriz::operator()(int linha, int coluna) {
     if (linha > linhas || coluna > colunas) {
         throw std::out_of_range("Error");
@@ -70,22 +109,24 @@ for (int i=0; i<linhas; i++){
 
 }
 
-Matriz& Matriz::operator=(const Matriz &m) {
-	if (this == &m)
-		return *this;
-	for (int i = 0; i < linhas; i++)
-		delete[] matriz[i];
-	delete[] matriz;
-	linhas = m.linhas;
-	colunas = m.colunas;
-	matriz = new double*[linhas];
-	for (int i = 0; i < linhas; i++) {
-		matriz[i] = new double[colunas];
-		for (int j = 0; j < colunas; j++)
-			matriz[i][j] = m.matriz[i][j];
-	}
-	return *this;
-}
+// Matriz& Matriz::operator=(const Matriz &m) {
+// 	if (this == &m)
+// 		return *this;
+// 	for (int i = 0; i < linhas; i++){
+//     delete[] matriz[i];
+//   }
+// 	delete[] matriz;
+//
+// 	linhas = m.linhas;
+// 	colunas = m.colunas;
+// 	matriz = new double*[linhas];
+// 	for (int i = 0; i < linhas; i++) {
+// 		matriz[i] = new double[colunas];
+// 		for (int j = 0; j < colunas; j++)
+// 			matriz[i][j] = m.matriz[i][j];
+// 	}
+// 	return *this;
+// }
 
 Matriz Matriz::operator+(const Matriz& m) const{
     if(m.linhas==linhas && m.colunas==colunas){
