@@ -14,8 +14,9 @@ public:
   int getCols();
   double**  getMatriz();
   Matriz();
-
   Matriz(int linhas, int colunas, const double &valor = 0);
+  Matriz(const Matriz &m); // construtor de copia
+  ~Matriz();
   void zeros();
   Matriz& operator=(const Matriz &m);
   Matriz operator+(const Matriz&) const;

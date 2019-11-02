@@ -7,10 +7,11 @@ using namespace std;
 
 int finalizarPrograma;
 int main(){// copiado exemplo do enunciado
-
-  Matriz Y(1,1);
+  std::cout << "comeco" <<std::endl;
+  Matriz Y;
   Matriz X(3,1), A(3,3), C(3,3),D(3,6);
   Matriz W = C;
+  std:: cout << "Meio das declaracoes" <<std::endl;
   Matriz Z(A);
   int numeroLinhas = A.getRows();
   int numeroColunas = A.getCols();
@@ -23,13 +24,13 @@ int main(){// copiado exemplo do enunciado
   A(1,3)=80;
   A(2,3)=90;
   A(3,3)=100;
-
-  C(2,1)=202;
-  D(1,5) = 123;
-  cout << D;
+  std::cout << "a definido" << std::endl;
+  // C(2,1)=202;
+  // D(1,5) = 123;
+  // cout << D;
   // Y.zeros(); // modifica todos os elementos de Y para o valor zero
   //
-  // cout << A << endl;
+  cout << A << endl;
   // cout << C << endl;
   //
   // // if (C==A){
@@ -48,20 +49,19 @@ int main(){// copiado exemplo do enunciado
   // // A=C-A; // Subtração
   // //A+=A; // Soma
   // //C=A;
-  // C=~A; // A é igual a transposta de C
-  // cout << C << endl;
+  C=~A; // A é igual a transposta de C
+  cout << C << endl;
   //X*=2; // multiplicação por uma constante
   //C=A*X; // multiplicação de matrizes
   // if (A == C) // verifica a igualdade entre A e C
   // if(X != Y) // verifica a desigualdade entre A e C
   //cout <<  C << endl; // Impressão de matrizes
   // cin >> Y // leitura de dados para dentro da matriz Y
-
-  // Y=A;
+  Y=A;
   // cout << Y;
   cin >> Y;
+  cout << Y;
   // std::cout << "Pressione ENTER para finalizar o programa";
   // std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
-
   return 0;
 }
