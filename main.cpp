@@ -14,18 +14,25 @@ int main(){// copiado exemplo do enunciado
   Matriz Z(A);
   int numeroLinhas = A.getRows();
   int numeroColunas = A.getCols();
-  A(2,1)=10; // altera o valor de uma posição de A
+  A(2,1)=20; // altera o valor de uma posição de A
+  C(2,1)=10;
   Y.zeros(); // modifica todos os elementos de Y para o valor zero
-  C=A+A; // Soma
-  C-=A; // Subtração
+
+  cout << A << endl;
+  cout << C << endl;
+
+  C=~A;
+  //C=A+A; // Soma
+  //C-=A; // Subtração
   // A=C-A; // Subtração
-  A+=A; // Soma
+  //A+=A; // Soma
+  //C=A;
   // A=~C; // A é igual a transposta de C
-  X*=2; // multiplicação por uma constante
-  C=A*X; // multiplicação de matrizes
+  //X*=2; // multiplicação por uma constante
+  //C=A*X; // multiplicação de matrizes
   // if (A == C) // verifica a igualdade entre A e C
   // if(X != Y) // verifica a desigualdade entre A e C
-  cout << C << endl; // Impressão de matrizes
+  //cout <<  C << endl; // Impressão de matrizes
   // cin >> Y // leitura de dados para dentro da matriz Y
 
 

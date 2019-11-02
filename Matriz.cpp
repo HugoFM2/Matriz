@@ -87,8 +87,6 @@ Matriz& Matriz::operator=(const Matriz &m) {
 	return *this;
 }
 
-
-
 Matriz Matriz::operator+(const Matriz& m) const{
     if(m.linhas==linhas && m.colunas==colunas){
          Matriz aux(linhas,colunas);
@@ -103,6 +101,7 @@ Matriz Matriz::operator+(const Matriz& m) const{
     }
 
 }
+
 Matriz& Matriz::operator+=(const Matriz &A){
     if ((A.colunas != this->colunas)||(A.linhas != this->linhas)){
         throw std::out_of_range("Erro!!! Matrizes com dimensoes diferentes.");
@@ -115,6 +114,21 @@ Matriz& Matriz::operator+=(const Matriz &A){
         }
     }
     return *this;
+}
+
+Matriz Matriz::operator-(const Matriz& m) const{
+    if(m.linhas==linhas && m.colunas==colunas){
+         Matriz aux(linhas,colunas);
+         for (int i=0; i<linhas; i++){
+            for(int j=0; j<colunas; j++){
+                aux.matriz[i][j]=m.matriz[i][j]-matriz[i][j];
+            }
+         }
+         return aux;
+    }else{
+        throw std::out_of_range("Erro!!! Matrizes com dimensoes diferentes.");
+    }
+
 }
 
 Matriz& Matriz::operator-=(const Matriz& m){
@@ -159,15 +173,64 @@ Matriz Matriz::operator*(const Matriz&x) {
 	if (colunas != x.linhas) {
     throw std::out_of_range("Error");
   }
-	else {
-        Matriz C(linhas,x.colunas);
-		for (int i = 0; i < linhas; i++) {
-			for (int j = 0; j < x.colunas; j++) {
-				for(int k = 0; k < x.linhas; k++){
-
-        }
+	else  {
+      Matriz C(linhas,x.colunas);
+		for (int i = 0; i < linhas; i++)    {
+			for (int j = 0; j < x.colunas; j++)      {
+				for(int k = 0; k < x.linhas; k++)
+        matriz[i][j] = matriz[i][j] + matriz[i][k] * x.matriz[k][j];
 			}
 		}
 		return C;
 	}
 }
+
+void Matriz::operator==(const Matriz &m){
+    if (m.linhas==linhas && m.colunas==colunas){
+        for (int i = 0; i < linhas; i++){
+		        for (int j = 0; j < colunas;){
+			          if (m.matriz[i][j] == matriz[i][j]) {
+                    j++;          
+                }
+                else{
+                  std:: cout << "Matrizes diferentes" << std::endl;
+                  return;
+                }
+            } 
+        }
+        std:: cout << "Matrizes iguais" << std::endl; 
+    }
+    else{
+        throw std::out_of_range("Erro!!! Matrizes com dimensoes diferentes.");
+    }
+} 
+
+void Matriz::operator!=(const Matriz &m){
+    if (m.linhas==linhas && m.colunas==colunas){
+        for (int i = 0; i < linhas; i++){
+		        for (int j = 0; j < colunas;){
+			          if (m.matriz[i][j] != matriz[i][j]) {
+                    std:: cout << "Matrizes diferentes" << std::endl;
+                    return;         
+                }
+                else{                  
+                  j++;
+                }
+            }
+        }
+        std:: cout << "Matrizes iguais" << std::endl; 
+    }
+    else{
+        throw std::out_of_range("Erro!!! Matrizes com dimensoes diferentes.");
+    }
+}  
+
+/*Matriz& Matriz::operator~(const Matriz &m){
+  if (this == &m)
+		return *this;
+  for (int i = 0; i < m.linhas; i++){
+		  for (int j = 0; j < m.colunas;){
+        matriz[i][j]= m.matriz[j][i];
+      }
+    return *this;  
+}*/

@@ -25,9 +25,12 @@ public:
   Matriz& operator*=(const int & a);
 	Matriz& operator*=(const Matriz&m);
 	Matriz operator*(const Matriz&a);
+  void operator==(const Matriz &m);
+  void operator!=(const Matriz &m);
+  //Matriz& operator~(const Matriz&m);
   friend std::ostream& operator<<(std::ostream &out, const Matriz &m);
   double& operator()(int linha, int coluna);
-
+  
 };
 
 #endif
