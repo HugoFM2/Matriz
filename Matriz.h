@@ -20,7 +20,7 @@ public:
   Matriz& operator=(const Matriz &m);
   Matriz operator+(const Matriz&) const;
   Matriz& operator-=(const Matriz&);
-  Matriz operator-(const Matriz&) const;
+  // Matriz operator-(const Matriz&) const;
   Matriz& operator+=(const Matriz&);
   Matriz& operator*=(const int & a);
 	Matriz& operator*=(const Matriz&m);

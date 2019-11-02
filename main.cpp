@@ -1,22 +1,30 @@
 #include <iostream>
-#include "Matriz.cpp"
+#include "Matriz.h"
 using namespace std;
 
 
 
 
-int main(){
-  Matriz Y(1,1,5);
-  Matriz X(3,2);
-  X(2,2)=4;
-<<<<<<< HEAD
-  Y(1,1)=20;
-=======
-  //Y=X;
-  Y+=Y;
-  cout << Y << endl;
->>>>>>> 7a91e387aa4648891f9c5d2ccb3f62c594a1e890
-  cout << X << endl;
-  cout << Y << endl;
+int main(){// copiado exemplo do enunciado
+
+  Matriz Y;
+  Matriz X(3,1), A(3,3), C(3,3);
+  Matriz W = C;
+  Matriz Z(A);
+  int numeroLinhas = A.getRows();
+  int numeroColunas = A.getCols();
+  A(2,1)=10; // altera o valor de uma posição de A
+  Y.zeros(); // modifica todos os elementos de Y para o valor zero
+  C=A+A; // Soma
+  C-=A; // Subtração
+  // A=C-A; // Subtração
+  A+=A; // Soma
+  // A=~C; // A é igual a transposta de C
+  X*=2; // multiplicação por uma constante
+  C=A*X; // multiplicação de matrizes
+  // if (A == C) // verifica a igualdade entre A e C
+  // if(X != Y) // verifica a desigualdade entre A e C
+  cout << C << endl; // Impressão de matrizes
+  // cin >> Y // leitura de dados para dentro da matriz Y
   return 0;
 }

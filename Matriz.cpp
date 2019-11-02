@@ -163,7 +163,9 @@ Matriz Matriz::operator*(const Matriz&x) {
         Matriz C(linhas,x.colunas);
 		for (int i = 0; i < linhas; i++) {
 			for (int j = 0; j < x.colunas; j++) {
-				for(int k = 0; k < x.linhas; k++)
+				for(int k = 0; k < x.linhas; k++){
+
+        }
 			}
 		}
 		return C;
