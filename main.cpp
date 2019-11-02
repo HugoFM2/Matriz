@@ -7,7 +7,6 @@ using namespace std;
 
 int finalizarPrograma;
 int main(){// copiado exemplo do enunciado
-  std::cout << "comeco" <<std::endl;
   Matriz Y;
   Matriz X(3,1), A(3,3), C(3,3),D(3,6);
   Matriz W = C;
@@ -61,7 +60,7 @@ int main(){// copiado exemplo do enunciado
   // cout << Y;
   cin >> Y;
   cout << Y;
-  // std::cout << "Pressione ENTER para finalizar o programa";
-  // std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
+  std::cout << "Pressione ENTER para finalizar o programa";
+  std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
   return 0;
 }
