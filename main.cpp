@@ -14,7 +14,16 @@ int main(){// copiado exemplo do enunciado
   Matriz Z(A);
   int numeroLinhas = A.getRows();
   int numeroColunas = A.getCols();
-  A(2,1)=20; // altera o valor de uma posição de A
+  A(1,1)=20; // altera o valor de uma posição de A
+  A(2,1)=30;
+  A(3,1)=40;
+  A(1,2)=50;
+  A(2,2)=60;
+  A(3,2)=70;
+  A(1,3)=80;
+  A(2,3)=90;
+  A(3,3)=100;
+
   C(2,1)=202;
   Y.zeros(); // modifica todos os elementos de Y para o valor zero
 
@@ -37,7 +46,8 @@ int main(){// copiado exemplo do enunciado
   // A=C-A; // Subtração
   //A+=A; // Soma
   //C=A;
-  // A=~C; // A é igual a transposta de C
+  C=~A; // A é igual a transposta de C
+  cout << C << endl;
   //X*=2; // multiplicação por uma constante
   //C=A*X; // multiplicação de matrizes
   // if (A == C) // verifica a igualdade entre A e C
@@ -47,7 +57,7 @@ int main(){// copiado exemplo do enunciado
 
 
 
-  std::cout << "Pressione ENTER para finalizar o programa:";
+  std::cout << "Pressione ENTER para finalizar o programa";
   std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
 
   return 0;

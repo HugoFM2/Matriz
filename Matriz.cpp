@@ -217,12 +217,12 @@ bool Matriz::operator!=(const Matriz &m){
     }
 }
 
-/*Matriz& Matriz::operator~(const Matriz &m){
-  if (this == &m)
-		return *this;
-  for (int i = 0; i < m.linhas; i++){
-		  for (int j = 0; j < m.colunas;){
-        matriz[i][j]= m.matriz[j][i];
+Matriz Matriz::operator~(){
+  Matriz aux(colunas,linhas);
+  for (int i = 0; i < linhas; i++){
+		  for (int j = 0; j < colunas;j++){
+        aux.matriz[i][j] = matriz[j][i];
       }
-    return *this;
-}*/
+  }
+  return aux;
+}
