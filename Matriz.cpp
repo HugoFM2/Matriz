@@ -185,45 +185,37 @@ Matriz Matriz::operator*(const Matriz&x) {
 	}
 }
 
-void Matriz::operator==(const Matriz &m){
+bool Matriz::operator==(const Matriz &m){
     if (m.linhas==linhas && m.colunas==colunas){
         for (int i = 0; i < linhas; i++){
-		        for (int j = 0; j < colunas;){
-			          if (m.matriz[i][j] == matriz[i][j]) {
-                    j++;          
-                }
-                else{
-                  std:: cout << "Matrizes diferentes" << std::endl;
-                  return;
-                }
-            } 
-        }
-        std:: cout << "Matrizes iguais" << std::endl; 
-    }
-    else{
-        throw std::out_of_range("Erro!!! Matrizes com dimensoes diferentes.");
-    }
-} 
-
-void Matriz::operator!=(const Matriz &m){
-    if (m.linhas==linhas && m.colunas==colunas){
-        for (int i = 0; i < linhas; i++){
-		        for (int j = 0; j < colunas;){
+		        for (int j = 0; j < colunas;j++){
 			          if (m.matriz[i][j] != matriz[i][j]) {
-                    std:: cout << "Matrizes diferentes" << std::endl;
-                    return;         
-                }
-                else{                  
-                  j++;
+                  return false;
                 }
             }
         }
-        std:: cout << "Matrizes iguais" << std::endl; 
+        return true;
     }
     else{
         throw std::out_of_range("Erro!!! Matrizes com dimensoes diferentes.");
     }
-}  
+}
+
+bool Matriz::operator!=(const Matriz &m){
+    if (m.linhas==linhas && m.colunas==colunas){
+        for (int i = 0; i < linhas; i++){
+		        for (int j = 0; j < colunas;j++){
+			          if (m.matriz[i][j] != matriz[i][j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    else{
+        throw std::out_of_range("Erro!!! Matrizes com dimensoes diferentes.");
+    }
+}
 
 /*Matriz& Matriz::operator~(const Matriz &m){
   if (this == &m)
@@ -232,5 +224,5 @@ void Matriz::operator!=(const Matriz &m){
 		  for (int j = 0; j < m.colunas;){
         matriz[i][j]= m.matriz[j][i];
       }
-    return *this;  
+    return *this;
 }*/

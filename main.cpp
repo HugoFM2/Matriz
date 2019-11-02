@@ -15,13 +15,23 @@ int main(){// copiado exemplo do enunciado
   int numeroLinhas = A.getRows();
   int numeroColunas = A.getCols();
   A(2,1)=20; // altera o valor de uma posição de A
-  C(2,1)=10;
+  C(2,1)=202;
   Y.zeros(); // modifica todos os elementos de Y para o valor zero
 
   cout << A << endl;
   cout << C << endl;
 
-  C=~A;
+  if (C==A){
+    cout << "Igualdade True" << endl;
+  } else {
+    cout << "Igualdade False" << endl;
+  }
+  if (C!=A){
+    cout << "Desigualdade True" << endl;
+  } else {
+    cout << "Desigualdade False" << endl;
+  }
+  // cout << C==A;
   //C=A+A; // Soma
   //C-=A; // Subtração
   // A=C-A; // Subtração
