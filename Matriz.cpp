@@ -86,10 +86,11 @@ std::istream& operator>>(std::istream &in, Matriz &m){
   int l,c,valor;
   int cursor = 1;
   int colCursor, linCursor;
-  std::cout << "Nº de linhas: ";
+  std::cout  << "Nº de linhas: ";
   in >> l;
   std::cout << "Nº de colunas: ";
   in >> c;
+
   Matriz aux(l,c);
   for(int k = 0;k<l*c;k++){
     for(int i = 0; i<l;i++){
@@ -108,9 +109,9 @@ std::istream& operator>>(std::istream &in, Matriz &m){
       }
       std::cout << " ]" << std::endl;
     }
-    std::cout << "ColCursor = " << colCursor <<std::endl;
     std::cout << "Insira o valor aonde está sublinhado: ";
     std::cin >> valor;
+    std::cout << std::endl << std::endl;;
     aux(linCursor, colCursor) = valor;
     cursor++;
   }
@@ -227,13 +228,18 @@ Matriz& Matriz::operator*=(const Matriz&x) {
     throw std::out_of_range("Error");
   }
 	else {
+    // std::cout << "linhas = " << linhas << std::endl;
+    // std::cout << "x.colunas = " << x.colunas << std::endl;
+    Matriz C(linhas,x.colunas);
 		for (int i = 0; i < linhas; i++) {
 			for (int j = 0; j <  x.colunas; j++) {
-				for(int k = 0; k < colunas; k++)
-				matriz[i][j] = matriz[i][j] + matriz[i][k] * x.matriz[k][j];
+				for(int k = 0; k < colunas; k++){
+          C.matriz[i][j] = C.matriz[i][j] + matriz[i][k] * x.matriz[k][j];
+        }
 			}
-
 		}
+    // std::cout << "MULTIPLICACAO, VALOR FINAL = " << std::endl << C << std::endl;
+    *this = C;
 		return *this;
 	}
 }
@@ -243,11 +249,11 @@ Matriz Matriz::operator*(const Matriz&x) {
     throw std::out_of_range("Error");
   }
 	else  {
-      Matriz C(linhas,x.colunas);
+    Matriz C(linhas,x.colunas);
 		for (int i = 0; i < linhas; i++)    {
 			for (int j = 0; j < x.colunas; j++)      {
 				for(int k = 0; k < x.linhas; k++)
-        matriz[i][j] = matriz[i][j] + matriz[i][k] * x.matriz[k][j];
+        C.matriz[i][j] = C.matriz[i][j] + matriz[i][k] * x.matriz[k][j];
 			}
 		}
 		return C;
